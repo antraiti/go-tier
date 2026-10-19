@@ -2,6 +2,8 @@
 
 A minimal, bold tier list maker built for video. Dark, flat, high-contrast, and out of the way so the list is the star.
 
+**Live:** https://antraiti.github.io/go-tier/
+
 Everything runs in the browser. There's no account and no server, and your lists are saved locally on your device.
 
 ## Features
@@ -64,22 +66,20 @@ python -m http.server 5173
 
 ## Deploying (GitHub Pages)
 
-The app is plain static files, so GitHub Pages can serve it straight from the `main` branch with no build step. `.nojekyll` tells Pages to serve the files as-is.
+The app is plain static files, so GitHub Pages serves it straight from the `main` branch root with no build step. Every push to `main` redeploys automatically within a minute or two. `.nojekyll` tells Pages to serve the files as-is.
 
-Pages requires either a **public** repo or a paid plan (GitHub Pro/Team) for private repos. To turn it on:
+Pages is already enabled for this repo. To set it up on a fork or new repo (Pages needs a **public** repo, or a paid plan for private ones):
 
 1. Open the repo on GitHub → **Settings** → **Pages**.
 2. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
 3. Pick branch **`main`**, folder **`/ (root)`**, and click **Save**.
-4. After a minute or two the site is live at `https://antraiti.github.io/go-tier/`.
+4. After a minute or two the site is live at `https://<user>.github.io/<repo>/`.
 
 Or from the command line with the GitHub CLI:
 
 ```powershell
-gh api -X POST repos/antraiti/go-tier/pages -f "source[branch]=main" -f "source[path]=/"
+gh api -X POST repos/<user>/<repo>/pages -f "source[branch]=main" -f "source[path]=/"
 ```
-
-After that, every push to `main` redeploys automatically.
 
 ## Project structure
 
