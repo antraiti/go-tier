@@ -43,6 +43,28 @@ const DB = (() => {
 
 const Store = DB;
 
+const PALETTES = {
+  Heat: ['#FF2E4D', '#FF8A1F', '#FFD21F', '#3DDC84', '#2FA8FF', '#9B5CFF'],
+  Neon: ['#FF00A8', '#FF5E00', '#FFE600', '#00FF85', '#00D1FF', '#7A5CFF'],
+  Classic: ['#FF7F7F', '#FFBF7F', '#FFDF7F', '#FFFF7F', '#BFFF7F', '#7FFF7F'],
+  Mono: ['#FFFFFF', '#D4D4D4', '#A3A3A3', '#737373', '#525252', '#3A3A3A'],
+  Ice: ['#E6F4FF', '#9ED8FF', '#4DB4FF', '#1F7AFF', '#2A3FCC', '#1B1F66'],
+};
+
+function newList(title = 'Untitled list') {
+  const names = ['S', 'A', 'B', 'C', 'D', 'F'];
+  return {
+    id: uid('l'),
+    title,
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
+    tiers: names.map((name, i) => ({ id: uid('r'), name, color: PALETTES.Heat[i], items: [] })),
+    pool: [],
+    items: {},
+    settings: { tileSize: 'M', showNames: false },
+  };
+}
+
 // Image refs are either IndexedDB blob ids or direct links (http/https/data URLs).
 const isLink = (ref) => /^(https?:|data:image\/)/i.test(ref || '');
 

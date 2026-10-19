@@ -86,8 +86,7 @@ gh api -X POST repos/<user>/<repo>/pages -f "source[branch]=main" -f "source[pat
 ```
 index.html      App shell
 css/app.css     All styles
-js/store.js     IndexedDB storage, image handling, import/export
-js/demo.js      Sample "Fast Food" list created on first run
+js/store.js     IndexedDB storage, list model, image handling, import/export
 js/dnd.js       Pointer-based drag and drop
 js/app.js       UI, state, and interactions
 ```

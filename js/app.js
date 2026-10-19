@@ -1168,8 +1168,6 @@
   async function init() {
     applyChrome();
     await gcImages().catch(() => {});
-    const lists = await Store.getAllLists();
-    if (!lists.length) await Demo.seed();
     route();
   }
 
