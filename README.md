@@ -2,8 +2,6 @@
 
 A minimal, bold tier list maker built for video. Dark, flat, high-contrast, and out of the way so the list is the star.
 
-**Live:** https://antraiti.github.io/go-tier/
-
 Everything runs in the browser. There's no account and no server, and your lists are saved locally on your device.
 
 ## Features
@@ -45,7 +43,7 @@ In the dashboard view, **Edit** lets you rename an item, change its tile image, 
 
 Lists and uploaded images are stored in your browser's IndexedDB, which means:
 
-- Data is per browser and per site. Lists made from a local copy won't appear on the live site, and vice versa.
+- Data is per browser and per site. Lists made from a local copy won't appear on a hosted copy, and vice versa.
 - Clearing site data in your browser deletes your lists.
 - Use **Export** on the lists page (or in the **Tiers** panel) to back up a list or move it to another browser. Exports include uploaded images; linked images are saved as links.
 
@@ -64,9 +62,24 @@ python -m http.server 5173
 # then open http://localhost:5173
 ```
 
-## Deploying
+## Deploying (GitHub Pages)
 
-The site is served by GitHub Pages straight from the `main` branch root. Every push to `main` redeploys automatically within a minute or two. `.nojekyll` tells Pages to serve the files as-is.
+The app is plain static files, so GitHub Pages can serve it straight from the `main` branch with no build step. `.nojekyll` tells Pages to serve the files as-is.
+
+Pages requires either a **public** repo or a paid plan (GitHub Pro/Team) for private repos. To turn it on:
+
+1. Open the repo on GitHub → **Settings** → **Pages**.
+2. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
+3. Pick branch **`main`**, folder **`/ (root)`**, and click **Save**.
+4. After a minute or two the site is live at `https://antraiti.github.io/go-tier/`.
+
+Or from the command line with the GitHub CLI:
+
+```powershell
+gh api -X POST repos/antraiti/go-tier/pages -f "source[branch]=main" -f "source[path]=/"
+```
+
+After that, every push to `main` redeploys automatically.
 
 ## Project structure
 
